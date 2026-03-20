@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR植物図鑑</title>
+<style>
+/* 画面全体のデザイン */
+body {
+font-family: sans-serif; text-align: center;
+padding-top: 50px; background-color: #f0f4f8; margin: 0;
+}
+
+/* メニューの白い枠 */
+.menu-container {
+background: white; padding: 20px; border-radius: 12px;
+display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+margin-bottom: 40px; width: 80%; max-width: 300px;
+}
+
+/* リストボックスのデザイン */
+select {
+font-size: 18px; padding: 10px; border-radius: 8px;
+margin-top: 15px; width: 100%; border: 1px solid #ccc;
+}
+
+/* AR起動ボタンのデザイン */
+.ar-button {
+display: inline-block; background-color: #007aff; color: white;
+padding: 15px 40px; font-size: 20px; font-weight: bold;
+text-decoration: none; border-radius: 30px;
+box-shadow: 0 4px 6px rgba(0,122,255,0.3);
+}
+</style>
+</head>
+<body>
+
+<h2>AR植物図鑑</h2>
+
+<div class="menu-container">
+<label for="plant-select" style="font-weight:bold; color:#333;">見たい植物を選んでください</label>
+<select id="plant-select">
+<option value="rose.usdz">バラ</option>
+<option value="sunflower.usdz">ヒマワリ</option>
+<option value="tulip.usdz">チューリップ</option>
+</select>
+</div>
+
+<br>
+
+<a id="ar-link" href="rose.usdz" rel="ar" class="ar-button">
+ARで表示する
+</a>
+
+<script>
+const selectMenu = document.querySelector('#plant-select');
+const arLink = document.querySelector('#ar-link');
+
+// リストが変更（change）されたら実行される
+selectMenu.addEventListener('change', (event) => {
+// 選択された新しいファイル名（例：sunflower.usdz）を取得
+const newFile = event.target.value;
+// ボタンのリンク先（href）を新しいファイル名に書き換える
+arLink.href = newFile;
+});
+</script>
+
+</body>
+</html>
 
